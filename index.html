@@ -5,14 +5,15 @@
   <meta charset="utf-8">
   <title>Nashville Software School</title>
   <link type="text/css" rel="stylesheet" href="style.css">
+  <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 </head>
 
 <body>
   <div id="site-container">
     <header>
       <nav>
-    	<ul>
-    	  <li class="links link-spacer"><a href="#">View Music</a></li>
+      <ul>
+        <li class="links link-spacer"><a href="#">View Music</a></li>
           <li class="links link-spacer"><a href="#">Add Music</a></li>
           <li class="links"><a href="#">Profile</a></li>
         </ul>
@@ -60,37 +61,37 @@
         <br>
         <label for="genre">Genre:</label>
         <br>
-    	<table>  
-    	    <tr>
-    	      <td class="left">
+      <table>  
+          <tr>
+            <td class="left">
               <input type="checkbox" name="rock" value="rock">
               <label for="rock" class="label-left">Rock</label>
             </td>
-    	      <td class="right">
+            <td class="right">
               <input type="checkbox" name="classical" value="classical">
               <label for="classical" class="label-right">Classical</label>
             </td>
-    	    </tr>
-    	    <tr>
-    	      <td class="left">
+          </tr>
+          <tr>
+            <td class="left">
               <input type="checkbox" name="pop" value="pop">
               <label for="pop" class="label-left">Pop</label>
             </td>
-    	      <td>
+            <td>
               <input type="checkbox" name="jazz" value="jazz">
               <label for="jazz" class="label-right">Jazz</label>
             </td>
-    	    </tr>
-    	    <tr>
-    	      <td class="left">
+          </tr>
+          <tr>
+            <td class="left">
               <input type="checkbox" name="blues" value="blues">
               <label for="blues" class="label-left">Blues</label>
             </td>
-    	      <td>
+            <td>
               <input type="checkbox" name="hiphop" value="hiphop">
               <label for="hiphop" class="label-right">Hiphop</label>
             </td>
-    	    </tr>
+          </tr>
         </table>
           <input type="button" name="filter" value="Filter" class="filter-button">
       </div>
@@ -98,7 +99,8 @@
     </div>
     </div>
   </div>
-
+  
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/requirejs/require.js"
           data-main="javascripts/main.js"></script>

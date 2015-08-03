@@ -1,12 +1,11 @@
 define(function() {
-		var songs = "";
 			
 return {
-		runAjax: function() {
+		runAjax: function(callback) {
 				$.ajax({
-					url: "./javascripts/songs.JSON"
+					url: "./javascripts/songs.JSON",
 			   }).done(function(data) {
-			     songs = data;
+			     callback.call(this, data);
 			})
 		},
 

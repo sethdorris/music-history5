@@ -3,24 +3,26 @@ requirejs(
   function(dom, songs1, songs2) {
     
     var $dom = dom.getOutputElement();
-	songs1.runAjax();
-	var songObject = songs1.getSongs();
-    var songs = songObject.songs;
-    var artists = songObject.artist;
-    var album = songObject.album;
-    songs2.runAjax();
-    var songObject2 = songs2.getSongs();
-    var songs2 = songObject2.songs;
-    var artists2 = songObject2.artist;
-    var album2 = songObject2.album;
+    var moreSongsArray = [];
 
-    for (var i = 0; i < songs.length; i++) {
-    	$dom.append("<div class='content-song'>" + songObject.songs[i] + "</div>" 
-    		+ "<div class='content-artist'>" + artists[i] + "<span class='content-album'>" 
-				+ "<em>off the album: </em>" + album[i] + "</span>" + "<button class='delete'>X</button>" + "</div>");
+
+// Populate-Songs Callback Function
+
+    var songs1Data = function(songs1) {
+    console.log(songs1);
+    console.log(songs1.songs);
+
+        for (var i = 0; i < songs1.songs.length; i++) {
+    	$dom.append("<div class='content-song'>" + songs1.songs[i] + "</div>" + "<div class='content-artist'>"
+    	             + songs1.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs1.album[i]
+    	             + "</span>" + "<button class='delete'>X</button>" + "</div>");
+		}
+	    $dom.append("<button id='more'>More>></button>");
     }
 
-    $dom.append("<button id='more'>More>></button>");
+
+// Populate-Songs Retrieve Data
+    songs1.runAjax(songs1Data);
   
 	$(document).on("click", ".delete", function() {
 		  var $deleteClicked = $(this);
@@ -31,17 +33,23 @@ requirejs(
 		  $parentPrevious.hide();
 		})
 
-	$(document).on("click", "#more", function(){
-		for (var j = 0; j < songs2.length; j++) {
-		$dom.append("<div class='content-song'>" + songs2[j] + "</div>");
-		$dom.append("<div class='content-artist'>" + "<em>by:</em> "+ artists[j] + "<span class='content-album'>" 
-			+ "<em>off the album: </em>" + album2[j] + "</span>" + "<button class='delete'>X</button>" + "</div>");
-		$('#more').hide();
-		}
+	$(document).on("click", "#more", function() {
+		
+		var moreSongs = function(songs2) {
+			for (var i = 0; i < songs2.songs.length; i++) {
+	         	$('#more').hide();
+	         	$dom.append("<div class='content-song'>" + songs2.songs[i] +"</div>" + "<div class='content-artist'>"
+    	             + songs2.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs2.album[i]
+    	             + "</span>" + "<button class='delete'>X</button>" + "</div>");
+	         }
+
+	    };  
+		songs2.runAjax(moreSongs);
 	})
 
-  }
-);
+});
+
+ 
 
 
 
