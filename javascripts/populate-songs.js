@@ -6,14 +6,14 @@ return {
 					url: "./javascripts/songs.JSON",
 			   }).done(function(data) {
 			     callback.call(this, data);
-			})
+			});
 		},
 
 		getSongs: function() {
 			return songs;
 		}
 
-	}
+	};
 });
 	
 

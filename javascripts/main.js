@@ -13,12 +13,10 @@ requirejs(
     console.log(songs1.songs);
 
         for (var i = 0; i < songs1.songs.length; i++) {
-    	$dom.append("<div class='content-song'>" + songs1.songs[i] + "</div>" + "<div class='content-artist'>"
-    	             + songs1.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs1.album[i]
-    	             + "</span>" + "<button class='delete'>X</button>" + "</div>");
+    	$dom.append("<div class='content-song'>" + songs1.songs[i] + "</div>" + "<div class='content-artist'>" + songs1.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs1.album[i] + "</span>" + "<button class='delete'>X</button>" + "</div>");
 		}
 	    $dom.append("<button id='more'>More>></button>");
-    }
+    };
 
 
 // Populate-Songs Retrieve Data
@@ -31,21 +29,19 @@ requirejs(
 		  console.log($deleteParent);
 		  $deleteParent.hide();
 		  $parentPrevious.hide();
-		})
+		});
 
 	$(document).on("click", "#more", function() {
 		
 		var moreSongs = function(songs2) {
 			for (var i = 0; i < songs2.songs.length; i++) {
 	         	$('#more').hide();
-	         	$dom.append("<div class='content-song'>" + songs2.songs[i] +"</div>" + "<div class='content-artist'>"
-    	             + songs2.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs2.album[i]
-    	             + "</span>" + "<button class='delete'>X</button>" + "</div>");
+	         	$dom.append("<div class='content-song'>" + songs2.songs[i] +"</div>" + "<div class='content-artist'>" + songs2.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs2.album[i] + "</span>" + "<button class='delete'>X</button>" + "</div>");
 	         }
 
 	    };  
 		songs2.runAjax(moreSongs);
-	})
+	});
 
 });
 

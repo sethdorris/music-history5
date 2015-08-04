@@ -1,0 +1,20 @@
+input[type="range"] {
+  max-width: 200px; }
+
+.jumbotron {
+  box-shadow: 2px 3px 3px gray; }
+
+/*@import 'nav';      This is how you import another style sheet*/
+/* Mixins @mixin is a sass function 
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.box 
+	{ @include border-radius(10px); }  */
+
+/*# sourceMappingURL=main.css.map */
