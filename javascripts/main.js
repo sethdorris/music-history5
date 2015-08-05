@@ -1,6 +1,20 @@
+requirejs.config({
+  baseUrl: './javascripts',
+  paths: {
+    'jquery': '../bower_components/jquery/dist/jquery.min',
+    'hbs': '../bower_components/require-handlebars-plugin/hbs',
+    'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min'
+  },
+  shim: {
+    'bootstrap': ['jquery']
+  }
+});
+
+
+
 requirejs(
-  ["dom-access", "populate-songs", "get-more-songs"], 
-  function(dom, songs1, songs2) {
+  ["jquery", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs"], 
+  function($, Handlebars, bootstrap, dom, songs1, songs2) {
     
     var $dom = dom.getOutputElement();
     var moreSongsArray = [];
@@ -9,13 +23,14 @@ requirejs(
 // Populate-Songs Callback Function
 
     var songs1Data = function(songs1) {
-    console.log(songs1);
-    console.log(songs1.songs);
+    require(['hbs!../templates/songs'], function(songTemplate) {
+    	$dom.html(songTemplate(songs1));
+    });
 
-        for (var i = 0; i < songs1.songs.length; i++) {
-    	$dom.append("<div class='content-song'>" + songs1.songs[i] + "</div>" + "<div class='content-artist'>" + songs1.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs1.album[i] + "</span>" + "<button class='delete'>X</button>" + "</div>");
-		}
-	    $dom.append("<button id='more'>More>></button>");
+  //       for (var i = 0; i < songs1.songs.length; i++) {
+  //   	$dom.append("<div class='content-song'>" + songs1.songs[i] + "</div>" + "<div class='content-artist'>" + songs1.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs1.album[i] + "</span>" + "<button class='delete'>X</button>" + "</div>");
+		// }
+	 //    $dom.append("<button id='more'>More>></button>");
     };
 
 
@@ -34,17 +49,15 @@ requirejs(
 	$(document).on("click", "#more", function() {
 		
 		var moreSongs = function(songs2) {
-			for (var i = 0; i < songs2.songs.length; i++) {
 	         	$('#more').hide();
-	         	$dom.append("<div class='content-song'>" + songs2.songs[i] +"</div>" + "<div class='content-artist'>" + songs2.artist[i] + "<span class='content-album'>" + "<em>off the album: </em>" + songs2.album[i] + "</span>" + "<button class='delete'>X</button>" + "</div>");
-	         }
-
+	         	require(['hbs!../templates/songs2'], function(songTemplate) {
+	         		$dom.append(songTemplate(songs2));
+	         	});
 	    };  
 		songs2.runAjax(moreSongs);
 	});
 
 });
-
  
 
 

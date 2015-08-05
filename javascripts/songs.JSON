@@ -1,5 +1,20 @@
 {
-	"songs": ["Burn", "Never Giving Up", "Gravity"],
-	"artist": ["In This Moment", "Of Mice and Men", "Papa Roach"],
-	"album": ["Blood", "Of Mice and Men", "Gravity"]
-}
+	"songs": [
+	{
+		"title": "Burn",
+		"author": "In This Moment",
+		"album": "In This Moment"
+	},
+	{
+		"title": "Never Giving Up",
+		"author": "Of Mice and Men",
+		"album": "Of Mice and Men"
+
+	},
+	{
+		"title": "Gravity",
+		"author": "Papa Roach",
+		"album" : "Gravity"
+	}
+
+]}

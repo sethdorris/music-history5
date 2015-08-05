@@ -1,4 +1,4 @@
-define(function() {
+define(['jquery'], function($) {
   var $maincontent = $('#main-content');
 
   return {

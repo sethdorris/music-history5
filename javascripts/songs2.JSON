@@ -1,5 +1,18 @@
 {
-	"songs": ["Be Somebody", "Big Bad Wolf", "All That You Are"],
-	"artist": ["Thousand Foot Crutch", "In This Moment", "Mudvayne"],
-	"album": ["The End is Where We Begin", "Black Widow", "Lost and Found"]
+	"songs": [{
+			"title": "Be Somebody",
+			"author": "Thousand Foot Crutch",
+			"album": "The End is Where We Begin"
+		},
+		{
+			"title": "Big Bad Wolf",
+			"author": "In This Moment",
+			"album": "Black Widow"
+		},
+		{
+			"title": "All That You Are",
+			"author": "Mudvayne",
+			"album": "Lost and Found"
+		}
+]
 }

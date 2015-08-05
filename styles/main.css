@@ -1,9 +1,96 @@
+body {
+  background: url("images/background.jpg"), linear-gradient(to bottom, #555 0%, #666 50%, #fff 100%);
+  background-blend-mode: overlay; }
+
+nav {
+  box-shadow: 2px 2px 2px #4C0000; }
+
 input[type="range"] {
-  max-width: 200px; }
+  max-width: 150px; }
+
+.row-eq-height {
+  display: block; }
+
+div.col-md-9 {
+  width: 100%; }
+
+div.col-md-3 {
+  padding-top: 15px; }
+
+#main-content {
+  color: #aaa;
+  padding-left: 75px; }
 
 .jumbotron {
-  box-shadow: 2px 3px 3px gray; }
+  box-shadow: 1px 1px 1px #aaa; }
 
+.content-song {
+  font-size: 18px;
+  color: #eee;
+  font-weight: bold;
+  margin: 20px 0 0 20px;
+  padding: 0; }
+
+.content-artist {
+  font-size: 12px;
+  margin: 0 5px 0 20px;
+  padding: 0; }
+
+.content-album {
+  font-size: 12px;
+  margin: 0 5px 0 5px;
+  padding-left: 5px;
+  border-left: 1px solid orangered; }
+
+label {
+  font-family: Helvetica, sans-serif;
+  font-weight: normal;
+  margin: 5px 0 0 5px;
+  font-size: 8pt;
+  color: #eee; }
+
+input[type="range"] {
+  margin: 10px; }
+
+select {
+  margin: 5px 0 10px 10px; }
+
+.filter-button {
+  display: block;
+  margin: 10px auto; }
+
+.label-left {
+  margin: 0 5px 0 5px; }
+
+.label-right {
+  margin: 0 0 0 5px; }
+
+table {
+  margin-left: 7px; }
+
+#more {
+  margin: 15px 0 10px 20px;
+  color: black; }
+
+.delete {
+  margin-left: 5px;
+  color: black; }
+
+@media screen and (min-width: 300px) {
+  .row-eq-height {
+    display: block; }
+
+  div.col-md-3 {
+    padding-left: 35px; }
+
+  #main-content {
+    padding-left: 5px; } }
+@media screen and (min-width: 500px) {
+  .row-eq-height {
+    display: flex; } }
+@media screen and (min-width: 1000px) {
+  #main-content {
+    padding-left: 175px; } }
 /*@import 'nav';      This is how you import another style sheet*/
 /* Mixins @mixin is a sass function 
 
