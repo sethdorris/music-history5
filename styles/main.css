@@ -53,7 +53,8 @@ input[type="range"] {
   margin: 10px; }
 
 select {
-  margin: 5px 0 10px 10px; }
+  margin: 5px 0 10px 10px;
+  max-width: 80px; }
 
 .filter-button {
   display: block;

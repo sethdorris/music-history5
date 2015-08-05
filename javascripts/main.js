@@ -18,13 +18,15 @@ requirejs(
     
     var $dom = dom.getOutputElement();
     var moreSongsArray = [];
+    var $panel = $(".col-md-3");
 
 
 // Populate-Songs Callback Function
 
     var songs1Data = function(songs1) {
-    require(['hbs!../templates/songs'], function(songTemplate) {
-    	$dom.html(songTemplate(songs1));
+    require(['hbs!../templates/songs', 'hbs!../templates/panel'], function(domTemplate, panelTemplate) {
+    	$dom.html(domTemplate(songs1));
+    	$panel.html(panelTemplate(songs1));
     });
 
   //       for (var i = 0; i < songs1.songs.length; i++) {
@@ -50,8 +52,10 @@ requirejs(
 		
 		var moreSongs = function(songs2) {
 	         	$('#more').hide();
-	         	require(['hbs!../templates/songs2'], function(songTemplate) {
+	         	require(['hbs!../templates/songs2', 'hbs!../templates/panelalbum', 'hbs!../templates/panelartist'], function(songTemplate, panelalbum, panelartist) {
 	         		$dom.append(songTemplate(songs2));
+	         		$('select[name="album-option"]').append(panelalbum(songs2));
+	         		$('select[name="artist-option"]').append(panelartist(songs2));
 	         	});
 	    };  
 		songs2.runAjax(moreSongs);
