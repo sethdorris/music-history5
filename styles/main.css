@@ -92,6 +92,14 @@ table {
 @media screen and (min-width: 1000px) {
   #main-content {
     padding-left: 175px; } }
+#addform {
+  width: 500px;
+  margin: 0 auto; }
+
+#addmusic label {
+  font-size: 12pt;
+  margin-right: 25px; }
+
 /*@import 'nav';      This is how you import another style sheet*/
 /* Mixins @mixin is a sass function 
 

@@ -18,7 +18,7 @@ requirejs(
     
     var $dom = dom.getOutputElement();
     var moreSongsArray = [];
-    var $panel = $(".col-md-3");
+    var $panel = $("#myPanel");
 
 
 // Populate-Songs Callback Function
@@ -46,7 +46,42 @@ requirejs(
 		  console.log($deleteParent);
 		  $deleteParent.hide();
 		  $parentPrevious.hide();
+
+      // $.ajax({
+      //   url: 'https://seth-music-history.firebaseio.com/songs.json',
+      //   method: "DELETE",
+      //   data: JSON.stringify(newAdd)
+      // }).done(function(addedsong) {
+      //   console.log(addedsong);
+      // });
+
 		});
+
+  var $add = $("#addMusicBtn");
+
+  $add.click(function(event) {
+    event.preventDefault();
+    var addSongName = $("#inputSongName").val();
+    var addArtistName = $("#inputArtistName").val();
+    var addAlbumName = $("#inputAlbumName").val();
+    
+    var newAdd = {
+      "title": addSongName,
+      "author": addArtistName,
+      "album": addAlbumName
+    };
+
+    console.log(newAdd);
+
+    $.ajax({
+      url: 'https://seth-music-history.firebaseio.com/songs.json',
+      method: "POST",
+      data: JSON.stringify(newAdd)
+    }).done(function(addedsong) {
+      console.log(addedsong);
+    });
+    
+  });
 
 	// $(document).on("click", "#more", function() {
 		

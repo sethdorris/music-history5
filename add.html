@@ -26,7 +26,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">View Music <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="index.html">View Music <span class="sr-only">(current)</span></a></li>
         <li><a href="add.html">Add Music</a></li>
         <li><a href="#">Profile</a></li>
       </ul>
@@ -37,35 +37,24 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-  <div id="site-container">
-    <header>
-<!--       <nav class="navbar navbar-default">
-      <ul>
-        <li class="links link-spacer"><a href="#">View Music</a></li>
-          <li class="links link-spacer"><a href="#">Add Music</a></li>
-          <li class="links"><a href="#">Profile</a></li>
-        </ul>
-      </nav> -->
-    </header>
-
-
-<!-- Panel -->
+<div class="container-fluid">
 
     <div class="row">
-      <div class="col-md-3">
-      
-
-
+      <div class="col-md-12" id="addform">
+          <form id="addmusic">
+            <label for="inputSongName">Song Name: </label>
+            <input type="text" placeholder="Song Name" id="inputSongName"></input><br>
+            <label for="inputArtistName">Artist Name: </label>
+            <input type="text" placeholder="Artist Name" id="inputArtistName"></input></br>
+            <label for="inputAlbumName">Album Name: </label>
+            <input type="text" placeholder="Album Name" id="inputAlbumName"></input><br>
+            <button id="addMusicBtn">Add Music</button>
+          </form>
       </div>
     </div>
 
-  <!-- MAIN CONTENT-->
-  
-    <div class="col-md-9">
-      <div id="main-content" class="content"></div>  
-    </div>
+</div>
 
-  </div>
   
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
