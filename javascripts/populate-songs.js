@@ -3,7 +3,7 @@ define(function() {
 return {
 		runAjax: function(callback) {
 				$.ajax({
-					url: "./javascripts/songs.JSON",
+					url: "https://seth-music-history.firebaseio.com/.json",
 			   }).done(function(data) {
 			     callback.call(this, data);
 			});

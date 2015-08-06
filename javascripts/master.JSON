@@ -1,0 +1,35 @@
+{
+	"songs": [
+	{
+		"title": "Burn",
+		"author": "In This Moment",
+		"album": "In This Moment"
+	},
+	{
+		"title": "Never Giving Up",
+		"author": "Of Mice and Men",
+		"album": "Of Mice and Men"
+
+	},
+	{
+		"title": "Gravity",
+		"author": "Papa Roach",
+		"album" : "Gravity"
+	},
+	{
+		"title": "Be Somebody",
+		"author": "Thousand Foot Crutch",
+		"album": "The End is Where We Begin"
+	},
+	{
+		"title": "Big Bad Wolf",
+		"author": "In This Moment",
+		"album": "Black Widow"
+	},
+	{
+		"title": "All That You Are",
+		"author": "Mudvayne",
+		"album": "Lost and Found"
+	}
+
+]}

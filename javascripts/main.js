@@ -48,18 +48,18 @@ requirejs(
 		  $parentPrevious.hide();
 		});
 
-	$(document).on("click", "#more", function() {
+	// $(document).on("click", "#more", function() {
 		
-		var moreSongs = function(songs2) {
-	         	$('#more').hide();
-	         	require(['hbs!../templates/songs2', 'hbs!../templates/panelalbum', 'hbs!../templates/panelartist'], function(songTemplate, panelalbum, panelartist) {
-	         		$dom.append(songTemplate(songs2));
-	         		$('select[name="album-option"]').append(panelalbum(songs2));
-	         		$('select[name="artist-option"]').append(panelartist(songs2));
-	         	});
-	    };  
-		songs2.runAjax(moreSongs);
-	});
+	// 	var moreSongs = function(songs2) {
+	//          	$('#more').hide();
+	//          	require(['hbs!../templates/songs2', 'hbs!../templates/panelalbum', 'hbs!../templates/panelartist'], function(songTemplate, panelalbum, panelartist) {
+	//          		$dom.append(songTemplate(songs2));
+	//          		$('select[name="album-option"]').append(panelalbum(songs2));
+	//          		$('select[name="artist-option"]').append(panelartist(songs2));
+	//          	});
+	//     };  
+	// 	songs2.runAjax(moreSongs);
+	// });
 
 });
  

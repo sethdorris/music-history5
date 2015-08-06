@@ -1,0 +1,55 @@
+<label for="length-slider">Song Length:</label>
+<input type="range" min="0" max="100" step="10" value="10">
+<label for="artist-option">Artist:</label>
+	<br>
+    <select name="artist-option">
+          <option>Options</option>
+          {{#each songs}}
+	          <option>{{author}}</option>
+		  {{/each}}
+	</select>
+	<br>
+    <label for="album-option">Album:</label>
+    <br>
+    <select name="album-option">
+		<option>Options</option>
+	    {{#each songs}}
+	    <option>{{album}}</option>
+		{{/each}}
+    </select>
+    <br>
+    <label for="genre">Genre:</label>
+    <br>
+	  <table>  
+	      <tr>
+	        <td class="left">
+	          <input type="checkbox" name="rock" value="rock">
+	          <label for="rock" class="label-left">Rock</label>
+	        </td>
+	        <td class="right">
+	          <input type="checkbox" name="classical" value="classical">
+	          <label for="classical" class="label-right">Classical</label>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td class="left">
+	          <input type="checkbox" name="pop" value="pop">
+	          <label for="pop" class="label-left">Pop</label>
+	        </td>
+	        <td>
+	          <input type="checkbox" name="jazz" value="jazz">
+	          <label for="jazz" class="label-right">Jazz</label>
+	        </td>
+	      </tr>
+	      <tr>
+	        <td class="left">
+	          <input type="checkbox" name="blues" value="blues">
+	          <label for="blues" class="label-left">Blues</label>
+	        </td>
+	        <td>
+	          <input type="checkbox" name="hiphop" value="hiphop">
+	          <label for="hiphop" class="label-right">Hiphop</label>
+	        </td>
+	      </tr>
+	    </table>
+      <input type="button" name="filter" value="Filter" class="filter-button">
