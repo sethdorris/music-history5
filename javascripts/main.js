@@ -80,11 +80,12 @@ requirejs(
 
       
       var filteredDom = function (filteredArray) {
-        require(['hbs!../templates/songs'], function (domTemplate) {
+        require(['hbs!../templates/songs', 'hbs!../templates/panel'], function (domTemplate, panelTemplate) {
           console.log("filtered array: ", filteredArray); 
           var finalHTML = domTemplate({songs: filteredArray});
           console.log("finalHTML", finalHTML);
           $dom.html(finalHTML);
+          $panel.html(panelTemplate({songs: filteredArray}));
         })
       };
     });
@@ -116,7 +117,9 @@ requirejs(
   });
 
 
-
+$(document).on("click", "#reset-filter", function() {
+    songs1.runAjax(songs1Data);
+});
 
 	// $(document).on("click", "#more", function() {
 		
