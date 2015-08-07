@@ -57,6 +57,38 @@ requirejs(
 
 		});
 
+  $(document).on("click", "#filter-button", function() {
+      var artistSelected = ($("select[name='artist-option']").val());
+      var filteredArray = [];
+
+      $.ajax({
+        url: 'http://seth-music-history.firebaseio.com/songs.json',
+        method: "GET",
+        data: JSON.stringify(artistSelected)
+      }).done(function(returnedValue) {
+        // console.log(returnedValue);
+        for (var num in returnedValue) {
+          if (returnedValue[num].author === artistSelected) {
+            console.log("You have selected: ", returnedValue[num].author);
+            filteredArray.push(returnedValue[num])
+            console.log("filtered array: ", filteredArray);
+          }
+        }
+        filteredDom(filteredArray);
+      });
+
+
+      
+      var filteredDom = function (filteredArray) {
+        require(['hbs!../templates/songs'], function (domTemplate) {
+          console.log("filtered array: ", filteredArray); 
+          var finalHTML = domTemplate({songs: filteredArray});
+          console.log("finalHTML", finalHTML);
+          $dom.html(finalHTML);
+        })
+      };
+    });
+
   var $add = $("#addMusicBtn");
 
   $add.click(function(event) {
@@ -82,6 +114,9 @@ requirejs(
     });
     
   });
+
+
+
 
 	// $(document).on("click", "#more", function() {
 		
