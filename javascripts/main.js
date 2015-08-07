@@ -2,6 +2,7 @@ requirejs.config({
   baseUrl: './javascripts',
   paths: {
     'jquery': '../bower_components/jquery/dist/jquery.min',
+    'lodash': '../bower_components/lodash/lodash',
     'hbs': '../bower_components/require-handlebars-plugin/hbs',
     'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min',
     'firebase': '../bower_components/firebase/firebase'
@@ -17,16 +18,18 @@ requirejs.config({
 
 
 requirejs(
-  ["jquery", "firebase", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs"], 
-  function($, _firebase, Handlebars, bootstrap, dom, songs1, songs2) {
+  ["jquery", "firebase", "lodash", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs"], 
+  function($, _firebase, _, Handlebars, bootstrap, dom, songs1, songs2) {
     
     var $dom = dom.getOutputElement();
     var moreSongsArray = [];
     var $panel = $("#myPanel");
     var myFirebase = new Firebase("https://seth-music-history.firebaseio.com");
+    
     myFirebase.child("songs").on("value", function(snapshot) {
-      console.log(snapshot.val());  
-    });
+      var database = snapshot.val();
+      console.log(database); 
+  
 
 
 // Populate-Songs Callback Function
@@ -43,7 +46,7 @@ requirejs(
     songs1.runAjax(songs1Data);
   
 	$(document).on("click", ".delete", function() {
-		  console.log(songs1);
+		  console.log();
 		});
 
   $(document).on("click", "#filter-button", function() {
@@ -105,22 +108,11 @@ requirejs(
   });
 
 
-$(document).on("click", "#reset-filter", function() {
-    songs1.runAjax(songs1Data);
+  $(document).on("click", "#reset-filter", function() {
+      songs1.runAjax(songs1Data);
+  });
 });
 
-	// $(document).on("click", "#more", function() {
-		
-	// 	var moreSongs = function(songs2) {
-	//          	$('#more').hide();
-	//          	require(['hbs!../templates/songs2', 'hbs!../templates/panelalbum', 'hbs!../templates/panelartist'], function(songTemplate, panelalbum, panelartist) {
-	//          		$dom.append(songTemplate(songs2));
-	//          		$('select[name="album-option"]').append(panelalbum(songs2));
-	//          		$('select[name="artist-option"]').append(panelartist(songs2));
-	//          	});
-	//     };  
-	// 	songs2.runAjax(moreSongs);
-	// });
 
 });
  
