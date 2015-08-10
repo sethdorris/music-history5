@@ -18,8 +18,8 @@ requirejs.config({
 
 
 requirejs(
-  ["jquery", "firebase", "lodash", "hbs", "bootstrap", "dom-access", "populate-songs", "get-more-songs"], 
-  function($, _firebase, _, Handlebars, bootstrap, dom, songs1, songs2) {
+  ["jquery", "firebase", "lodash", "hbs", "bootstrap", "dom-access"], 
+  function($, _firebase, _, Handlebars, bootstrap, dom) {
     
     var $dom = dom.getOutputElement();
     var moreSongsArray = [];
@@ -28,28 +28,49 @@ requirejs(
     
     myFirebase.child("songs").on("value", function(snapshot) {
       var database = snapshot.val();
-      console.log(database); 
   
+//function that populates the DOM panel 
+//and DOM Main-content section with song data GET from firebase Server
 
-
-// Populate-Songs Callback Function
-
-    var songs1Data = function(songs1) {
+    songs1Data = function(database) {
     require(['hbs!../templates/songs', 'hbs!../templates/panel'], function(domTemplate, panelTemplate) {
-    	$dom.html(domTemplate(songs1));
-    	$panel.html(panelTemplate(songs1));
+
+      $dom.html(domTemplate({songs: database}));
+    	$panel.html(panelTemplate({songs: database}));
       });
     };
 
-
-// Populate-Songs Retrieve Data
-    songs1.runAjax(songs1Data);
+    songs1Data(database);
   
 	$(document).on("click", ".delete", function() {
-		  console.log();
-		});
+      var songName = $(this).parent().prev().text();
 
-  $(document).on("click", "#filter-button", function() {
+      var answer = prompt("This will PERMANENTLY DELETE this song from the database, are you sure?");
+      answer = answer.toUpperCase();
+      var titleKey = "";
+
+      if (answer === "YES") {
+
+        for (var prop in database) {
+          if (database[prop].title === songName) {
+
+            // console.log(JSON.stringify(database[prop]));
+            // console.log(database[prop]);
+            titleKey = _.findKey(database, {"title": songName});
+            console.log(titleKey);
+          }
+        }
+      $.ajax({
+            url: 'https://seth-music-history.firebaseio.com/songs/' + titleKey + ".json",
+            method: "DELETE",
+          }).done(function(returnedValue) {
+            console.log(returnedValue);
+          });
+    }
+	});
+
+  $(document).on("click", "#filter-button", function(event) {
+      event.preventDefault();
       var artistSelected = ($("select[name='artist-option']").val());
       var filteredArray = [];
 
@@ -61,9 +82,7 @@ requirejs(
         // console.log(returnedValue);
         for (var num in returnedValue) {
           if (returnedValue[num].author === artistSelected) {
-            console.log("You have selected: ", returnedValue[num].author);
-            filteredArray.push(returnedValue[num])
-            console.log("filtered array: ", filteredArray);
+            filteredArray.push(returnedValue[num]);
           }
         }
         filteredDom(filteredArray);
@@ -73,44 +92,45 @@ requirejs(
       
       var filteredDom = function (filteredArray) {
         require(['hbs!../templates/songs', 'hbs!../templates/panel'], function (domTemplate, panelTemplate) {
-          console.log("filtered array: ", filteredArray); 
           var finalHTML = domTemplate({songs: filteredArray});
           $dom.html(finalHTML);
           $panel.html(panelTemplate({songs: filteredArray}));
-        })
+        });
       };
     });
 
   var $add = $("#addMusicBtn");
 
   $add.click(function(event) {
-    event.preventDefault();
-    var addSongName = $("#inputSongName").val();
-    var addArtistName = $("#inputArtistName").val();
-    var addAlbumName = $("#inputAlbumName").val();
-    
-    var newAdd = {
-      "title": addSongName,
-      "author": addArtistName,
-      "album": addAlbumName
-    };
+        event.preventDefault();
+        var addSongName = $("#inputSongName").val();
+        var addArtistName = $("#inputArtistName").val();
+        var addAlbumName = $("#inputAlbumName").val();
+        
+        var newAdd = {
+          "title": addSongName,
+          "author": addArtistName,
+          "album": addAlbumName
+        };
 
-    console.log(newAdd);
+        console.log(newAdd);
 
-    $.ajax({
-      url: 'https://seth-music-history.firebaseio.com/songs.json',
-      method: "POST",
-      data: JSON.stringify(newAdd)
-    }).done(function(addedsong) {
-      console.log(addedsong);
-    });
-    
+        $.ajax({
+          url: 'https://seth-music-history.firebaseio.com/songs.json',
+          method: "POST",
+          data: JSON.stringify(newAdd)
+        }).done(function(addedsong) {
+          console.log(addedsong);
+        });
   });
+
+  
 
 
   $(document).on("click", "#reset-filter", function() {
-      songs1.runAjax(songs1Data);
+      songs1Data(database);
   });
+
 });
 
 
