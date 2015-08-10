@@ -96,6 +96,10 @@ table {
   font-size: 12pt;
   margin-right: 25px; }
 
+#filter-button,
+#reset-filter {
+  font-size: 8pt; }
+
 /*@import 'nav';      This is how you import another style sheet*/
 /* Mixins @mixin is a sass function 
 
