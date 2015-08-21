@@ -6,7 +6,7 @@ define(["jquery", "q"], function($, Q) {
 
 
 		$.ajax({
-			url: "./javascripts/songs2.JSON"
+			url: "https://seth-music-history.firebaseio.com/songs.json"
 		}).done(function(songs_data) {
 			deferred.resolve(songs_data);
 		})
@@ -17,5 +17,4 @@ define(["jquery", "q"], function($, Q) {
 		return deferred.promise;
 	}
 
-});	
-
+});
