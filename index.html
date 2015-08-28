@@ -3,55 +3,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Nashville Software School</title>
+  <title>Pinterest App!</title>
 
   <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link type="text/css" rel="stylesheet" href="styles/main.css">
 
 </head>
 
-<body>
-		<!--  THIS IS THE START OF THE NAVBAR -->
-		<nav class="navbar navbar-default">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		    </div>
-
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		      <ul class="nav navbar-nav">
-		        <li class="active"><a href="index.html">View Music <span class="sr-only">(current)</span></a></li>
-		        <li><a href="add.html">Add Music</a></li>
-		        <li><a href="#">Profile</a></li>
-		      </ul>
-		    </div><!-- /.navbar-collapse -->
-		</nav>
-		<!-- THIS IS THE END OF THE NAV BAR -->
-	<div class="container-fluid">
-		
-		<div class="row-eq-height">
-		  
-		  <div class="col-md-3" id="myPanel">
-			  
-
-
-		  </div> <!-- Closing DIV for COL-MD-3 & JUMBOTRON -->
-		  
-
-		  <div class="col-md-9">
-			  <div id="main-content">
-			  
-
-			  
-			  </div>
-		  </div>
-		</div>  <!--Closing DIV TAG for ROW -->
+<body ng-app="app">
+	<div class="container-fluid" ng-view>
 
 	</div> <!-- Closing DIV Tag for SITE CONTAINER -->
 
@@ -59,7 +19,14 @@
 
 
 
-	<script src="bower_components/requirejs/require.js"
-	      data-main="javascripts/main.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+	<script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+	<script src="https://cdn.firebase.com/libs/angularfire/1.1.2/angularfire.min.js"></script>
+	<script src="javascripts/app.js"></script>
+
+
 </body>
 </html>

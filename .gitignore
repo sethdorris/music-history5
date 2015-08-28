@@ -1,7 +1,5 @@
-Gruntfile.js
-bower.json
-bower_components
+lib
 node_modules
 package.json
 sass
-index2.html
+.sass-cache
