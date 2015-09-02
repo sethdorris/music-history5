@@ -10,5 +10,5 @@ define(function (require) {
 			console.log("setting user id to ", newId);
 			uid = newId;
 		}
-	}
+	};
 });
