@@ -6,7 +6,7 @@ app.controller("mainCtrl", ["$scope", "$firebaseArray", function($scope, $fireba
 	$scope.inputAlbumName = "";
 	$scope.inputArtistName = "";
 	$scope.inputSongName = "";
-	
+
 	console.log($scope.songs);
 
 	$scope.addNewSong = function () {
@@ -14,7 +14,8 @@ app.controller("mainCtrl", ["$scope", "$firebaseArray", function($scope, $fireba
 		$scope.songs.$add({album: $scope.inputAlbumName, author: $scope.inputArtistName, title: $scope.inputSongName});
 	};
 
-
-
+	$scope.removeSong = function (song) {
+		$scope.songs.$remove(song);
+	};
 
 }]);
